@@ -1,5 +1,9 @@
 # Cold Ice Remastered-ModX
+<<<<<<< HEAD
 
+=======
+ 
+>>>>>>> c319c57cdaee9318bb30d325772bce827921143e
 This mod is developed as a standalone mod for Half-Life
 This plugin wants to replicate as good as possible the real mod
 Official link for the mod: https://www.moddb.com/mods/cold-ice-remastered
@@ -19,4 +23,8 @@ All credit for the ideas go the the authors
 		//mode 5: Glow Shell transparent
 	
 		weapons_glows_color "0 255 255" // ice blue
+<<<<<<< HEAD
 		weapons_glows_thickness "128"
+=======
+		weapons_glows_thickness "128"
+>>>>>>> c319c57cdaee9318bb30d325772bce827921143e
