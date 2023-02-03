@@ -228,15 +228,6 @@ public plugin_init()
 	{
 		register_touch(HalfLifeWeaponsEntities[i],"worldspawn","WeaponsTouchTheGround")
 	}
-	// Item effects
-	set_task(0.25,"Item_Task")
-
-	weapons_spin_on_off = register_cvar("weapons_spin_on_off","1")
-	weapons_spin_speed = register_cvar("weapons_spin_speed","150.0")
-	weapons_effects_on_off = register_cvar("weapons_effects_on_off","1")
-	weapons_effects_mode = register_cvar("weapons_effects_mode","4")
-	weapons_glows_color = register_cvar("weapons_glows_color","0 255 255")
-	weapons_glows_thickness = register_cvar("weapons_glows_thickness","128")
 
 
 	// Flying crowbar area
@@ -278,14 +269,16 @@ public plugin_init()
 	RegisterHam(Ham_Item_AddToPlayer,"weapon_crowbar","fw_CrowbarItemAdd");
 	RegisterHam(Ham_Item_AddDuplicate,"weapon_crowbar","fw_CrowbarItemAdd");
 	
-	crowbar_speed = register_cvar("cir_crowbar_speed","1300");
-	crowbar_trail = register_cvar("cir_crowbar_trail","1");
-	damage_crowbar = register_cvar("cir_crowbar_damage","240.0");
-	freeze_duration = register_cvar("freeze_duration","2.0");
 
 	///////////////////////////////////////////////////////////////////////////////
 	// CVARS
 	///////////////////////////////////////////////////////////////////////////////
+
+	// ===== cvars crowbar power =======
+	crowbar_speed 		 = register_cvar("cir_crowbar_speed","1300");
+	crowbar_trail 		 = register_cvar("cir_crowbar_trail","1");
+	damage_crowbar 		 = register_cvar("cir_crowbar_damage","240.0");
+	freeze_duration 	 = register_cvar("freeze_duration","2.0");
 
 	// ===== cvars weapons ======= (1-on 0-off)
 	cvar_Wcrowbar        = create_cvar("sv_cir_crowbar", "1");
@@ -336,6 +329,17 @@ public plugin_init()
 
 	// ====== cvar lighting ==================
 	gCvarLight 				   = create_cvar("sv_cir_light", "h");
+
+	// ====== Item effects ==================
+	set_task(0.25,"Item_Task")
+
+	weapons_spin_on_off = register_cvar("weapons_spin_on_off","1")
+	weapons_spin_speed = register_cvar("weapons_spin_speed","150.0")
+	weapons_effects_on_off = register_cvar("weapons_effects_on_off","1")
+	weapons_effects_mode = register_cvar("weapons_effects_mode","4")
+	weapons_glows_color = register_cvar("weapons_glows_color","0 255 255")
+	weapons_glows_thickness = register_cvar("weapons_glows_thickness","128")
+
 	/////////////////////////////////////////////////////////////////////////////////
 
 	// Parachute area
