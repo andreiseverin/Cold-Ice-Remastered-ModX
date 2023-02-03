@@ -1,27 +1,57 @@
+
 # Cold Ice Remastered-ModX
 
+This project is a modern open-sourced rebuild of Cold Ice 1.75, a popular Half-Life mod back in 1999. Set in a winter scene, its philosophy is to deliver deathmatch that doesn't take itself seriously. Only in this mod will you find voiceover cameos from Samuel L. Jackson, Hans Gruber, and "Leeroy Jenkins" by Ben Schulz. Its ethos delivers an explosively frantic fast-paced gameplay that was and always will be Cold Ice.
+
 This mod is developed as a standalone mod for Half-Life
-This plugin wants to replicate as good as possible the real mod
-Official link for the mod: https://www.moddb.com/mods/cold-ice-remastered
+This plugin wants to replicate as good as possible the real mod.
 
 All credit for the ideas go the the authors
 
- Cvar settings for effects :
+
+## Author of the plugin
+
+- [@teylo](https://github.com/andreiseverin)
+
+## Author of the rebuild mod 
+- [@surreal](hhttps://github.com/solidi/hl-mods/issues)
+
+
+
+## Installation
+
+Copy all the files in your valve folder. Then go to `valve\addons\amxmodx\configs\plugins.ini` and add a new line with : 
+
+```bash
+  cir.amxx
+```
+In the `cir_maps.ini` file you need to add all the maps where do you want the plugin to work.
+In the `cir_weapon.ini` file you cann use your own custom models by following the model:
+
+```bash
+  "models/old_model.mdl" "models/new_model.mdl"
+```
+Pay attention: only the models starting with `p_ v_ and w_` work.
+
+You can set up the following cvars in the `server.cfg` file :
+
+```bash
 
 // ===== cvars for the effect =======
 
-weapons_spin_on_off "1"
-weapons_spin_speed "150.0"
-weapons_effects_on_off "1"
+weapons_spin_on_off "1" 
+weapons_spin_speed "150.0" 
+weapons_effects_on_off "1" 
 weapons_glows_thickness "128"
 
-//mode 1: Hologram.
-//mode 2: Explode models will be big.
-//mode 3: Glow Shell random rgb colors.
-//mode 4: Glow Shell manual color with "weapons_glows_color" cvar.
-//mode 5: Glow Shell transparent
+//mode 1: Hologram. 
+//mode 2: Explode models will be big. 
+//mode 3: Glow Shell random rgb colors. 
+//mode 4: Glow Shell manual color with "weapons_glows_color" cvar. 
+//mode 5: Glow Shell transparent 
 weapons_effects_mode "4"
 
+// ===== cvars crowbar power ======= cir_crowbar_speed 1300 cir_crowbar_trail 1 cir_crowbar_damage 240.0 freeze_duration 2.0
 
 // ===== cvars crowbar power =======
 cir_crowbar_speed 1300
@@ -78,5 +108,4 @@ sv_cir_wings 1
 
 // ====== cvar lighting (from a -darkest to z - brightest ==================
 sv_cir_light h
-
-
+```
