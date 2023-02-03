@@ -1,0 +1,1 @@
+F:\Steam\steamapps\common\Half-Life\ice_beta3\maps\resgen.exe -d F:\Steam\steamapps\common\Half-Life\ice_beta3\maps
