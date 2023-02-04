@@ -14,7 +14,7 @@ All credit for the ideas go the the authors
 - [@teylo](https://github.com/andreiseverin)
 
 ## Author of the rebuild mod 
-- [@surreal](hhttps://github.com/solidi/hl-mods/issues)
+- [@surreal](https://github.com/solidi)
 
 
 
@@ -109,3 +109,16 @@ sv_cir_wings 1
 // ====== cvar lighting (from a -darkest to z - brightest ==================
 sv_cir_light h
 ```
+
+## Thanks to:
+
+- Surreal for developping the rebuild mod
+- Napoleon for constant helping and ideas
+- Cold Ice Remastered community for constant support and ideas
+- All the map creators from the original mod
+- GameBanana for "the" archive of models, effects, and everything https://gamebanana.com/
+- AlliedModder community for all the documentation,plugins and debugging tips https://forums.alliedmods.net/
+- Chat GPT for some algorithms ideas and code explanation
+
+
+
