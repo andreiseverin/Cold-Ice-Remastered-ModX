@@ -246,6 +246,9 @@ public plugin_init()
 	RegisterHam(Ham_Weapon_SecondaryAttack, "weapon_9mmAR", "grenades_secondary_attack_post", 1)
 	RegisterHam(Ham_Weapon_SecondaryAttack,"weapon_crowbar","fw_CrowbarSecondaryAttack");
 	RegisterHam(Ham_Weapon_PrimaryAttack, "weapon_9mmAR", "mp5_primary_attack_post", 1)
+	RegisterHam(Ham_Weapon_PrimaryAttack, "weapon_9mmhandgun", "glock_primary_attack_pre" , 0)
+	RegisterHam(Ham_Weapon_PrimaryAttack, "weapon_9mmhandgun", "glock_primary_attack_post", 1)
+	RegisterHam(Ham_Weapon_SecondaryAttack, "weapon_9mmhandgun", "glock_secondary_attack")
 
 	// Set ammo on weapon touch
 	RegisterHam(Ham_Touch, "weapon_crossbow", "touch_crossbow", 1);
@@ -814,7 +817,7 @@ public give_weapons(id)
 {
 	// Buffer to write the file
 	new buffer[128];
-	format(buffer, 128, "You received: crowbar, glock ");
+	format(buffer, 128, "[Cold Ice Remastered] You received: crowbar, glock ");
 
 	if(is_user_alive(id))
 	{
@@ -1660,6 +1663,64 @@ public restore_shotgun_ammo(id)
 public mp5_primary_attack_post(this)
 {
 	set_ent_data_float(this, "CBasePlayerWeapon", "m_flNextPrimaryAttack", 0.06)
+}
+
+// 9mmhandgun firing speed (MOUSE1) -1 + verify ammo
+public glock_primary_attack_pre(this)
+{
+	new player = get_pdata_cbase(this, m_pPlayer, XTRA_OFS_WEAPON)
+	
+    //restore 9mmhandgun ammo 
+	if (hl_get_weapon_ammo((hl_user_has_weapon(player,HLW_GLOCK))) == 1)
+	 set_task(2.0, "restore_glock_ammo", player)
+	old_clip[player] = get_pdata_int(this, m_iClip, XTRA_OFS_WEAPON)
+}
+
+// 9mmhandgun firing speed (MOUSE1) -2
+public glock_primary_attack_post(this)
+{
+
+	new player = get_pdata_cbase(this, m_pPlayer, XTRA_OFS_WEAPON)
+
+	if(old_clip[player] <= 0)
+		return
+
+	set_ent_data_float(this, "CBasePlayerWeapon", "m_flNextPrimaryAttack", 0.3)
+
+	if(get_pdata_int(this, m_iClip, XTRA_OFS_WEAPON) != 0)
+		set_ent_data_float(this, "CBasePlayerWeapon", "m_flTimeWeaponIdle", 2.0)
+	else
+		set_ent_data_float(this, "CBasePlayerWeapon", "m_flTimeWeaponIdle", 0.3)
+}
+
+// 9mmhandgun secondary attack
+
+public glock_secondary_attack(this)
+{
+	new player = get_pdata_cbase(this, m_pPlayer, XTRA_OFS_WEAPON)
+	set_ent_data_float(this, "CBasePlayerWeapon", "m_flNextSecondaryAttack", 3.0)
+		//restore 9mmhandgun ammo 
+	if (hl_get_weapon_ammo((hl_user_has_weapon(player,HLW_GLOCK))) == 1)
+	 set_task(3.5, "restore_glock_ammo", player)
+	old_clip[player] = get_pdata_int(this, m_iClip, XTRA_OFS_WEAPON)
+} 
+
+ //restore 9mmhandgun ammo 
+public restore_glock_ammo(id){
+		
+			if(hl_get_ammo(id,HLW_GLOCK) <= get_pcvar_num(cvar_ammo_glock) && hl_get_ammo(id,HLW_GLOCK) != 0 )
+		{
+			if (hl_get_ammo(id,HLW_GLOCK) <= get_pcvar_num(cvar_start_ammo_glock))
+			{
+				hl_set_weapon_ammo((hl_user_has_weapon(id,HLW_GLOCK)),hl_get_ammo(id,HLW_GLOCK)+17); // + 17 cuz wasted on reloading
+				hl_set_ammo(id,HLW_GLOCK,0); 
+			}
+			else
+			{
+				hl_set_weapon_ammo((hl_user_has_weapon(id,HLW_GLOCK)),get_pcvar_num(cvar_start_ammo_glock));
+				hl_set_ammo(id,HLW_GLOCK,hl_get_ammo(id,HLW_GLOCK)-get_pcvar_num(cvar_start_ammo_glock)+17); // + 17 cuz wasted on reloading	
+			}
+		}
 }
 
 
