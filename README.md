@@ -1,4 +1,4 @@
-
+![CIR ModX](https://repository-images.githubusercontent.com/570977077/56b8eeb1-df75-44a5-bf1c-be09cd41ba47)
 # Cold Ice Remastered-ModX
 
 This project is a modern open-sourced rebuild of Cold Ice 1.75, a popular Half-Life mod back in 1999. Set in a winter scene, its philosophy is to deliver deathmatch that doesn't take itself seriously. Only in this mod will you find voiceover cameos from Samuel L. Jackson, Hans Gruber, and "Leeroy Jenkins" by Ben Schulz. Its ethos delivers an explosively frantic fast-paced gameplay that was and always will be Cold Ice.
